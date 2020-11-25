@@ -3,24 +3,82 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/solar/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="mystyle.css" rel="stylesheet" type="text/css"/>
 
-  <title>Hello app</title>
+
+  <title>SensorData</title>
 </head>
 
-<body>
-  <h1>Hello</h1>
+<body style="background-color: #303030;">
   <div id="app">
-    <input v-model="name" placeholder="Name">
-    <button v-on:click="sayHello()" class="btn btn-primary">Say hello</button>
-    <div>{{ greeting }}</div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: auto; margin-left: 5%; margin-right: 5%;">
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <br>
+
+    <div class="card text-white bg-dark mb-3" style="width: auto; margin-left: 5%; margin-right: 5%;">
+      <div class="card-header">SensorData</div>
+      <div class="card-body">
+        <p class="card-title">This is a web application to display fake SensorData with the help of Axios. Backend in C#, frontend in HTML/TS.</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-dark mb-3" style="width: auto; margin-left: 5%; margin-right: 5%;">
+      <div class="card-header">Data</div>
+      <div class="card-body">
+
+       <button id="getAllButton" v-on:click="getAllData" class="btn btn-success">GET!</button>
+       <ul>
+          <li v-for="data in sensordata"> Id : {{data.id}} <br> Name : {{data.sensorName}} <br> Degrees : {{data.temperature}} <br> Co2 : {{data.co2}} </li>
+       </ul>
+
+
+       <button id="clearAllButton" v-on:click="clearAllData" class="btn btn-danger">Clear!</button>
+
+      </div>
+    </div>
+
+    <br>
   </div>
 
   <script src="bundle.js"></script>
